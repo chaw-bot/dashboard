@@ -1,19 +1,17 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Salvage } from "../Salvage";
-import FetchCompanies from "../../store/Companies/CompaniesAPI";
+import { FetchCompanies } from "../../store/Companies/CompaniesAPI";
 import { getCompanies } from "../../store/Companies/CompaniesReducer";
 
-export const CompanyCard = () => {
-  const companyStore = useSelector((store) => store.company);
+export const CompanyCard = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     FetchCompanies().then((response) => dispatch(getCompanies(response)));
-    // eslint-disable-next-line
-  }, []);
+  }, [dispatch]);
 
-  const card = companyStore.map((company) => (
+  const card = props.companyStoreProps.map((company) => (
     <li key={company.id} className="rounded overflow-hidden shadow-lg">
       <div className=" w-full lg:max-w-full lg:flex">
         <img
