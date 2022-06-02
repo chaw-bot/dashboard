@@ -13,7 +13,7 @@ const FetchCompanies = async () => {
       email: company.companyEmail,
       address: company.companyAddress,
       logo: company.logoUrl,
-    }
+    };
 
     return companyObj;
   });
@@ -21,4 +21,41 @@ const FetchCompanies = async () => {
   return responseData;
 };
 
-export default FetchCompanies;
+const PostCompanies = async (details) => {
+  const { id, name, email, address, logo, tpin } = details;
+
+  const companyDetails = {
+    id,
+    name,
+    companyEmai: email,
+    companyAddress: address,
+    logoUrl: logo,
+    tpin,
+  };
+
+  axios({
+    method: "post",
+    url: baseURL,
+    data: JSON.stringify(companyDetails),
+    headers: { "Content-Type": "application/json" },
+  }).then((response) => {
+    console.log(response);
+  }).catch((response) => {
+    console.log(response);
+  });
+
+  // try {
+  //   const response = await fetch(baseURL, {
+  //     method: "POST",
+  //     body: JSON.stringify(companyDetails),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   console.log(await response.json());
+  // } catch (error) {
+  //   throw new Error(error.message);
+  // }
+};
+
+export { FetchCompanies, PostCompanies };
