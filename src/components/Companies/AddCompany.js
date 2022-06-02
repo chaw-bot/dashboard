@@ -1,7 +1,29 @@
 import React, { useState } from "react";
+import { PostCompanies } from "../../store/Companies/CompaniesAPI"
 
-export const AddCompany = () => {
+export const AddCompany = (props) => {
   const [showModal, setShowModal] = useState(false);
+
+  const [inputs, setInputs] = useState({
+    "Company Name": "",
+    "Company Email": "",
+    "Company Address": "",
+    "Registration Number": "",
+    "Logo Url": "",
+    Tpin: "",
+  });
+
+  const onChange = (e) => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(PostCompanies(inputs));
+  };
 
   return (
     <>
@@ -18,69 +40,39 @@ export const AddCompany = () => {
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <h1 className="w-full max-w-lg p-6">Fill in the form</h1>
-                <form className="w-full max-w-lg p-6">
+                <form onSubmit={handleSubmit} className="w-full max-w-lg p-6">
                   <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full md:w-1/2 px-3 mb-6">
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        type="text"
-                        placeholder="Company Name"
-                      />
-                    </div>
-                    <div className="w-full md:w-1/2 px-3 mb-6">
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        type="email"
-                        placeholder="Company Email"
-                      />
-                    </div>
-                    <div className="w-full md:w-1/2 px-3 mb-6">
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        type="text"
-                        placeholder="Company Address"
-                      />
-                    </div>
-                    <div className="w-full md:w-1/2 px-3 mb-6">
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        type="text"
-                        placeholder="Registration Number"
-                      />
-                    </div>
-                    <div className="w-full md:w-1/2 px-3 mb-6">
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        type="text"
-                        placeholder="Logo Url"
-                      />
-                    </div>
-                    <div className="w-full md:w-1/2 px-3 mb-6">
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        type="text"
-                        placeholder="Tpin"
-                      />
-                    </div>
+                    {Object.entries(inputs).map(([key, value]) => {
+                      return (
+                        <div key={key} className="w-full md:w-1/2 px-3 mb-6">
+                          <input
+                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            placeholder={key}
+                            type="text"
+                            value={value}
+                            name={key}
+                            onChange={onChange}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                    <button
+                      className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => setShowModal(false)}
+                    >
+                      Close
+                    </button>
+                    <button
+                      className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="submit"
+                    >
+                      Add Company
+                    </button>
                   </div>
                 </form>
-
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Save Changes
-                  </button>
-                </div>
               </div>
             </div>
           </div>
