@@ -10,7 +10,7 @@ const App = () => (
     <Router>
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/salvages" element={<SalvagePage />} />
+        <Route exact path="/salvages/:id" element={<SalvagePage />} />
       </Routes>
     </Router>
   </Provider>
