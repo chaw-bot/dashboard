@@ -1,8 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux"
+import { Link, useParams } from "react-router-dom";
 import { SalvageCard } from "./Salvages/SalvageCard"
+import { getCompanySalvages } from "../store/Salvages/salvageReducer"
 
 export const SalvagePage = () => {
+  const salvageStore = useSelector((store) => store.salvage)
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getCompanySalvages(id));
+  }, [dispatch]);
+
   return (
     <>
       <header className="bg-white shadow">
@@ -12,7 +23,7 @@ export const SalvagePage = () => {
           </Link>
         </div>
       </header>
-      <SalvageCard />
+      <SalvageCard salvageStoreProps={salvageStore} />
     </>
   );
 };
