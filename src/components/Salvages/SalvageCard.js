@@ -18,43 +18,43 @@ export const SalvageCard = (props) => {
         <table className="table-auto w-full">
           <tbody>
             <tr>
-              <td className="border px-4 py-2">Car Make</td>
+              <td className="border px-4 py-2 font-medium">Car Make</td>
               <td className="border px-4 py-2">{salvage.make}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Color</td>
+              <td className="border px-4 py-2 font-medium">Color</td>
               <td className="border px-4 py-2">{salvage.color}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Registration Number</td>
+              <td className="border px-4 py-2 font-medium">Registration Number</td>
               <td className="border px-4 py-2">{salvage.regNumber}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Model</td>
+              <td className="border px-4 py-2 font-medium">Model</td>
               <td className="border px-4 py-2">{salvage.model}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Mileage</td>
+              <td className="border px-4 py-2 font-medium">Mileage</td>
               <td className="border px-4 py-2">{salvage.mileage}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Year of Manufacture</td>
+              <td className="border px-4 py-2 font-medium">Year of Manufacture</td>
               <td className="border px-4 py-2">{salvage.yearOfManufacture}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Chassis Number</td>
+              <td className="border px-4 py-2 font-medium">Chassis Number</td>
               <td className="border px-4 py-2">{salvage.chassisNumber}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Damage</td>
+              <td className="border px-4 py-2 font-medium">Damage</td>
               <td className="border px-4 py-2">{salvage.damage}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Location</td>
+              <td className="border px-4 py-2 font-medium">Location</td>
               <td className="border px-4 py-2">{salvage.location}</td>
             </tr>
             <tr>
-              <td className="border px-4 py-2">Starting Price</td>
+              <td className="border px-4 py-2 font-medium">Starting Price</td>
               <td className="border px-4 py-2">K {salvage.startingPrice}</td>
             </tr>
           </tbody>
@@ -80,7 +80,7 @@ export const SalvageCard = (props) => {
   ));
 
   return (
-    <ul className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
+    <ul className="bg-gradient-to-r from-green-100 to-green-50 p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
       {card}
     </ul>
   );

@@ -47,24 +47,4 @@ const PostCompany = async (details) => {
 
 };
 
-const companyPaginations = async () => {
-  const response = await axios.get(baseURL);
-  const responseData = response.data;
-
-  responseData.map((page) => {
-    const pagination = {
-      firtPage: page.firstPage,
-      lastPage: page.lastPage,
-      nextPage: page.nextPage,
-      pageNumber: page.pageNumber,
-      pageSize: page.pageSize,
-      previousPage: page.previousPage,
-      totalPages: page.totalPages,
-      totalRecords: page.totalRecords,
-    }
-    return pagination;
-  })
-  return responseData;
-}
-
 export { FetchCompanies, PostCompany };
