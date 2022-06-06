@@ -21,7 +21,7 @@ const FetchCompanies = async () => {
   return responseData;
 };
 
-const PostCompanies = async (details) => {
+const PostCompany = async (details) => {
   const { id, name, email, address, logo, tpin } = details;
 
   const companyDetails = {
@@ -33,6 +33,7 @@ const PostCompanies = async (details) => {
     tpin,
   };
 
+  // Server is not responding
   axios({
     method: "post",
     url: baseURL,
@@ -44,18 +45,6 @@ const PostCompanies = async (details) => {
     console.log(response);
   });
 
-  // try {
-  //   const response = await fetch(baseURL, {
-  //     method: "POST",
-  //     body: JSON.stringify(companyDetails),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   console.log(await response.json());
-  // } catch (error) {
-  //   throw new Error(error.message);
-  // }
 };
 
-export { FetchCompanies, PostCompanies };
+export { FetchCompanies, PostCompany };

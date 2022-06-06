@@ -12,7 +12,7 @@ export const CompanyCard = (props) => {
     FetchCompanies().then((response) => dispatch(getCompanies(response)));
   }, [dispatch]);
 
-  const card = props.companyStoreProps.map((company) => (
+  const card = props.companyStore.map((company) => (
     <li key={company.id} className="rounded overflow-hidden shadow-lg">
       <div className=" w-full lg:max-w-full lg:flex">
         <img

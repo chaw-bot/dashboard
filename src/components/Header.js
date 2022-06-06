@@ -10,8 +10,7 @@ export const Header = (props) => {
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
         </Link>
         <AddCompany
-          companyStoreProps={props.companyStoreProps}
-          newCompanyProps={props.newCompanyProps}
+          companyStore={props.companyStore}
         />
       </div>
     </header>
