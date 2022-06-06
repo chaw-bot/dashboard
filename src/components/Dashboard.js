@@ -9,11 +9,11 @@ export const Dashboard = () => {
 
   return (
     <div className="min-h-full">
-      <Header companyStoreProps={companyStore} />
+      <Header companyStore={companyStore} />
       <main>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
-            <CompanyCard companyStoreProps={companyStore} />
+            <CompanyCard companyStore={companyStore} />
           </div>
         </div>
       </main>
