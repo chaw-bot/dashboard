@@ -16,7 +16,7 @@ const getCompanySalvages = (companyId) => async (dispatch) => {
 };
 
 const addSalvage = (salvageInfo, companyId) => async (dispatch) => {
-  const salvageData = await PostSalvage(salvageInfo, companyId);
+  await PostSalvage(salvageInfo, companyId);
   dispatch(getCompanySalvages(companyId));
 };
 

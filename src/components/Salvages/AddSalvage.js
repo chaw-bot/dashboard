@@ -3,20 +3,20 @@ import { useDispatch } from "react-redux";
 import { addSalvage } from "../../store/Salvages/salvageReducer";
 
 const initialState = {
-  make: { name: "Make", value: "Random" },
-  model: { name: "Model", value: "Random" },
-  chassisNumber: { name: "Chassis Number", value: "h576ijg" },
-  color: { name: "Color", value: "White" },
-  regNumber: { name: "Registration number", value: "ABC123" },
-  yearOfManufacture: { name: "Year Of Manufacturer", value: 2030 },
-  mileage: { name: "Mileage", value: 1000 },
+  make: { name: "Make", value: "" },
+  model: { name: "Model", value: "" },
+  chassisNumber: { name: "Chassis Number", value: "" },
+  color: { name: "Color", value: "" },
+  regNumber: { name: "Registration number", value: "" },
+  yearOfManufacture: { name: "Year Of Manufacturer", value: 0 },
+  mileage: { name: "Mileage", value: 0 },
   salvageType: { name: "Salvage Type", value: "Offer" },
-  startingPrice: { name: "Starting Price", value: 5000 },
-  minIncrease: { name: "Min Increase", value: 100 },
-  location: { name: "Location", value: "Lusaka" },
-  damageDescription: { name: "Damage description", value: "Pretty Damaged" },
-  startTime: { name: "Start Time", value: "2022-10-12" },
-  endTime: { name: "End Time", value: "2022-10-12" },
+  startingPrice: { name: "Starting Price", value: 0 },
+  minIncrease: { name: "Min Increase", value: 0 },
+  location: { name: "Location", value: "" },
+  damageDescription: { name: "Damage description", value: "" },
+  startTime: { name: "Start Time", value: "" },
+  endTime: { name: "End Time", value: "" },
   imageUrls: {
     name: "Images",
     value: ["string", "string", "string", "string", "string", "string"],
@@ -25,9 +25,9 @@ const initialState = {
 
 export const AddSalvage = (props) => {
   const [showModal, setShowModal] = useState(false);
-  const dispatch = useDispatch();
-
+  const [editing, setEditing] = useState(false);
   const [inputs, setInputs] = useState(initialState);
+  const dispatch = useDispatch();
 
   const onChange = (e) => {
     const obj = inputs[e.target.name];

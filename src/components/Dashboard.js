@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 import { Header } from "./Header";
 import { CompanyCard } from "./Companies/CompanyCard";
 
 export const Dashboard = () => {
   const companyStore = useSelector((store) => store.company);
+
+
 
   return (
     <div className="min-h-full">

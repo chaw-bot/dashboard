@@ -87,4 +87,8 @@ const DeleteSalvage = async (salvageId) => {
   return url;
 };
 
+// const editSalvage = async (salvageId) => {
+//   const url = await axios.edit(`https://gar-test.hobbiton.tech/salvages/${salvageId}/edit`)
+// }
+
 export { FetchSalvages, PostSalvage, DeleteSalvage };

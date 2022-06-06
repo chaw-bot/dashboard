@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { PostCompany } from "../../store/Companies/CompaniesAPI";
 
 export const AddCompany = () => {
   const [showModal, setShowModal] = useState(false);

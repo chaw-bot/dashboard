@@ -1,12 +1,23 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { usePagination } from "react-use-pagination";
 import { Link } from "react-router-dom";
 import { FetchCompanies } from "../../store/Companies/CompaniesAPI";
 import { getCompanies } from "../../store/Companies/CompaniesReducer";
-import { SalvagesReducer } from "../../store/Salvages/salvageReducer";
 
 export const CompanyCard = (props) => {
   const dispatch = useDispatch();
+
+  const {
+    currentPage,
+    totalPages,
+    setNextPage,
+    setPreviousPage,
+    nextEnabled,
+    previousEnabled,
+    startIndex,
+    endIndex,
+  } = usePagination();
 
   useEffect(() => {
     FetchCompanies().then((response) => dispatch(getCompanies(response)));
@@ -20,7 +31,7 @@ export const CompanyCard = (props) => {
           alt={company.name}
           className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden p-3"
         />
-        <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div className="bg-amber-100 p-4 flex flex-col justify-between leading-normal">
           <div className="mb-8">
             <p className="text-sm text-gray-600 flex items-center">
               {company.companyEmail}
@@ -45,8 +56,19 @@ export const CompanyCard = (props) => {
   ));
 
   return (
-    <ul className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
-      {card}
-    </ul>
+    <>
+      <ul className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-5">
+        {card}
+      </ul>
+      <button onClick={setPreviousPage} disabled={!previousEnabled}>
+        Previous Page
+      </button>
+      <span>
+        Current Page: {currentPage} of {totalPages}
+      </span>
+      <button onClick={setNextPage} disabled={!nextEnabled}>
+        Next Page
+      </button>
+    </>
   );
 };

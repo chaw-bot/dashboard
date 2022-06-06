@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 export const SalvageCard = (props) => {
+  const handleEditing = () => {
+    console.log("Edit");
+  };
+
   const card = props.salvageStore.map((salvage) => (
     <li key={salvage.id} className="border-solid border-2 border-sky-500">
       <ul className="container grid grid-cols-4 gap-2 mx-auto px-6 py-4">
@@ -60,9 +64,11 @@ export const SalvageCard = (props) => {
         <button
           className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="submit"
+          onClick={handleEditing}
         >
           Edit Salvage
         </button>
+
         <button
           className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           onClick={() => props.deleteSalvage(salvage.id)}
