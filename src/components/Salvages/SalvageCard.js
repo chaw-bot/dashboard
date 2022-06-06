@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export const SalvageCard = (props) => {
-  const card = props.salvageStoreProps.map((salvage) => (
-    <li key={salvage.id}>
-      {salvage.images.map((image) => (
-        <div key={image} className="container grid grid-cols-4 gap-2 mx-auto">
-          <div className="w-full rounded">
-            <img src={image} alt="salvage image" />
-          </div>
-        </div>
-      ))}
+  const card = props.salvageStore.map((salvage) => (
+    <li key={salvage.id} className="border-solid border-2 border-sky-500">
+      <ul className="container grid grid-cols-4 gap-2 mx-auto px-6 py-4">
+        {salvage.images.map((image, index) => (
+          <li key={index} className="hover:w-full">
+            <img src={image} alt="salvage image" className="w-full rounded" />
+          </li>
+        ))}
+      </ul>
       <div className="px-6 py-4">
-        <table className="table-auto">
+        <table className="table-auto w-full">
           <tbody>
             <tr>
               <td className="border px-4 py-2">Car Make</td>
@@ -55,6 +55,20 @@ export const SalvageCard = (props) => {
             </tr>
           </tbody>
         </table>
+      </div>
+      <div className="max-w-7xl flex justify-between mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <button
+          className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="submit"
+        >
+          Edit Salvage
+        </button>
+        <button
+          className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          onClick={() => props.deleteSalvage(salvage.id)}
+        >
+          Delete
+        </button>
       </div>
     </li>
   ));
