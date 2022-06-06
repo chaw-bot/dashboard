@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { PostCompanies } from "../../store/Companies/CompaniesAPI"
+import { PostCompany } from "../../store/Companies/CompaniesAPI";
 
-export const AddCompany = (props) => {
+export const AddCompany = () => {
   const [showModal, setShowModal] = useState(false);
 
   const [inputs, setInputs] = useState({
@@ -22,7 +22,15 @@ export const AddCompany = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(PostCompanies(inputs));
+    setInputs({
+      "Company Name": "",
+      "Company Email": "",
+      "Company Address": "",
+      "Registration Number": "",
+      "Logo Url": "",
+      Tpin: "",
+    });
+    setShowModal(false)
   };
 
   return (
